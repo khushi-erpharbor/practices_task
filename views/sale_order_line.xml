@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="sale_order_view_inherit">
+        <field name="name">sale.order.view.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='name']" position="after">
+                <button name="%(sale_order_wizard_action_window)d" string="Show History" type="action"
+                        class="oe_highlight"/>
+            </xpath>
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="quantity"/>
+                <field name="display_image"/>
+                <field name="purchase_id"/>
+            </xpath>
+            <xpath expr="//button[@name='action_cancel']" position="after">
+                <button name="sale_order_button" string="Line Delete" type="object"
+                        class="oe_highlight"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
