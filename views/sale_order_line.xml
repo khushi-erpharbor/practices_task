@@ -9,14 +9,59 @@
                 <button name="%(sale_order_wizard_action_window)d" string="Show History" type="action"
                         class="oe_highlight"/>
             </xpath>
+            <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='discount']" position="after">
+                <field name="discount_amount"/>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="total_discount" invisible="True"/>
+                <field name="submit"/>
+                <field name="users" widget="many2many_tags"/>
+            </xpath>
+
             <xpath expr="//field[@name='payment_term_id']" position="after">
                 <field name="quantity"/>
                 <field name="display_image"/>
                 <field name="purchase_id"/>
+                <field name="purchase_state" />
             </xpath>
+
             <xpath expr="//button[@name='action_cancel']" position="after">
                 <button name="sale_order_button" string="Line Delete" type="object"
                         class="oe_highlight"/>
+            </xpath>
+
+            <xpath expr="//button[@name='sale_order_button']" position="after">
+                <button name="%(purchase_order_wizard_action)d" string="Add Product" type="action" class="oe_highlight"/>
+                <button name="purchase_create" string="Purchase Create" type="object" class="oe_highlight" states="draft" attrs="{'invisible': [('purchase_state', '=',True)]}"/>
+                <button name="action_send_mail" string="Send By Mail" type="object" class="oe_highlight"/>
+
+            </xpath>
+            
+            <xpath expr="//sheet/div/button[@name='action_preview_sale_order']" position="before">
+                <button name="purchase_order_line" type="object" class="oe_stat_button" icon="fa-book">
+                    <field name="purchase_count" widget="statinfo" string="Purchase"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
+<!-- attrs="{'invisible': [('purchase_count', '=', 0)]}" -->
+<!-- attrs="{'invisible': [('purchase_state', '=', False)]}" -->
+    <record model="ir.ui.view" id="purchase_order_view_inherit">
+        <field name="name">purchase.order.view.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date_order']" position="before">
+                <field name="image"/>
+            </xpath>
+            <xpath expr="//form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='product_id']" position="before">
+                <field name="product_image" widget="image" options ="{'size': [70, 70]}"/>
+            </xpath>
+            <xpath expr="//button[@name='button_cancel']" position="after">
+                <button name="%(purchase_order_wizard_action)d" string="Add Product" type="action" class="oe_highlight"/>
+            </xpath>
+            <xpath expr="//form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='price_unit']" position="after">
+                <field name="discount_a"/>
             </xpath>
         </field>
     </record>

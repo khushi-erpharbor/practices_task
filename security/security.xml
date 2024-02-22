@@ -1,0 +1,12 @@
+<odoo>
+    <record id="category_sale_group" model="ir.module.category">
+        <field name="name">sale</field>
+        <field name="description">Rights and groups for sale</field>
+        <field name="sequence">100</field>
+    </record>
+
+    <record id="approval_group_view" model="res.groups">
+        <field name="category_id" ref="category_sale_group"/>
+        <field name="name">approval</field>
+    </record>
+</odoo>

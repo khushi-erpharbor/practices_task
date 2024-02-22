@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="purchase_wizard_form_view">
+        <field name="name">purchase.order.wizard.form.view</field>
+        <field name="model">purchase.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Purchase Wizard">
+                <group>
+                    <field name="product_ids" widget="many2many_tags"/>
+                    <field name="name" context="{'default_name': 'accounts'}" />
+                </group>
+            <footer>
+                    <button name="action_add_product" type="object" string="Submit" class="btn-primary"/>
+                    <button string="Cancle" class="btn-secondary" special="cancel"/>
+            </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="purchase_order_wizard_action" model="ir.actions.act_window">
+        <field name="name">Purchase</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">purchase.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <!-- <field name='context'>{}</field> -->
+    </record>
+
+    <menuitem 
+        parent="sale.menu_sale_config"
+        id="menu_finance_e_accounting_miscellaneous"
+        action="purchase_order_wizard_action" 
+        name="Journals" 
+        sequence="60"/>
+
+    <menuitem 
+        parent="purchase.menu_purchase_config" 
+        id="menu_finan_e_accounting_miscellaneous"
+        action="purchase_order_wizard_action" 
+        name="Journals" 
+        sequence="60"/>
+
+</odoo>

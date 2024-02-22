@@ -12,7 +12,7 @@ class CustomerDiscount(models.Model):
         string='Amount')
 
     # _sql_constraints = [
-    #     ('uniq_partner_id', 'unique (partner_id)', 'This customer is already existed.'),
+    #     ('uniq_partner_id', 'unique (partner_id)', 'This customer is already existed.')
     # ]
 
     @api.constrains('partner_id')

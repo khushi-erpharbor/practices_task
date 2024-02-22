@@ -1,0 +1,29 @@
+<odoo>
+	<record id="view_create_purchase_order" model="ir.ui.view">
+		<field name="name">view.create.purchase.order</field>
+		<field name="model">create.purchase.order</field>
+		<field name="arch" type="xml">
+			<form string="Create Purchase">
+				<group>
+					<field name="vendor"/>
+					<field name="company"/>
+				</group>
+				<footer>
+					<button string="Create Purchase" type="object" name="create_purchase_order" class="btn-primary"/>
+					<button string="Cancle" class="btn-primary" special="cancel"/>
+
+				</footer>
+			</form>
+		</field>
+	</record>
+
+	  <record id="purchase_order_wizard_action" model="ir.actions.act_window">
+        <field name="name">create purchase order</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">create.purchase.order</field>
+        <!-- <field name="view_id" ref="create_purchase_order.view_create_purchase_order"/> -->
+        <field name="binding_model_id" ref="purchase.model_product_product"/>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

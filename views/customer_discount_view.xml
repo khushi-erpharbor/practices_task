@@ -37,6 +37,18 @@
         </field>
     </record>
 
+    <record id="search_customer_discount" model="ir.ui.view">
+        <field name="name">search.customer.discount</field>
+        <field name="model">customer.discount</field>
+        <field name="arch" type="xml">
+            <search string="Filters">
+                <separator/>
+                <filter string = "Amount" name="filter_amount" context="{'group_by':'amount'}"/>
+            </search>
+        </field>
+    </record>
+
+
     <menuitem id="customer_discount_menu"
         name="Customer Dicount"
         sequence="19"

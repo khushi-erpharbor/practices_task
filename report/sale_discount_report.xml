@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="sale_discount_report" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//th[@name='th_discount']" position="after">
+            <th name="th_discount_amount" class="text-right">Disc Amount</th>
+        </xpath>
+        <xpath expr="//td[@name='td_taxes']" position="before">
+            <td name="td_discount_amount" class="text-center">
+                <span t-field="line.discount_amount"/>
+            </td>
+        </xpath>
+
+        <xpath expr="//div[@class='clearfix']" position="after">
+            <div class="row justify-content-end">
+                <div class="col-6">
+                    <table class="table table-sm">
+                        <tr class="border-black">
+                            <td class="text-left"><strong>Discount Total</strong></td>
+                            <td class="text-right">
+                                <span t-field="doc.total_discount" t-options='{"widget": "monetary"}'/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

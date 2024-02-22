@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="project_project_inherit_view">
+        <field name="name">project.project.inherit.view</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='settings']" position="after">
+                <page name="plannig_hour" string="Plannig">
+                    <group>
+                        <field name="hours_total"/>
+                        <field name="hours_total_planned"/>
+                    </group>
+                    <group>
+                        <notebook>
+                            <page name="record" string="records">
+                                <field name="planning_line_ids"/>
+                            </page>
+                        </notebook>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,5 +1,18 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 practice.access_customer_discount,access_customer_discount,practice.model_customer_discount,base.group_user,1,1,1,1
 practice.access_sale_order_wizard,access_sale_order_wizard,practice.model_sale_order_wizard,base.group_user,1,1,1,1
+practice.access_purchase_wizard,access_purchase_wizard,practice.model_purchase_wizard,base.group_user,1,1,1,1
+practice.access_sale_confrom_wizard,access_sale_confrom_wizard,practice.model_sale_confrom_wizard,base.group_user,1,1,1,1
+practice.access_project_planning_line,access_project_planning_line,practice.model_project_planning_line,base.group_user,1,1,1,1
+practice.access_sale_wizard,access_sale_wizard,practice.model_sale_wizard,base.group_user,1,1,1,1
+practice.access_sale_order_discount_wizard,access_sale_order_discount_wizard,practice.model_sale_order_discount_wizard,base.group_user,1,1,1,1
+practice.access_create_purchase_order,access_create_purchase_order,practice.model_create_purchase_order,base.group_user,1,1,1,1
+practice.access_search_customer,access_search_customer,practice.model_search_customer,base.group_user,1,1,1,1
+
+
+
+
+
+
 
 

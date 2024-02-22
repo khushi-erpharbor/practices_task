@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="customer_search_tree_view">
+        <field name="name">search.customer.tree.view</field>
+        <field name="model">search.customer</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="customer_id"/>
+                <field name="mobile"/>
+                <field name="phone"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="search_customer_view_form">
+        <field name="name">search.customer.view.form</field>
+        <field name="model">search.customer</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="customer_id"/>
+                    </group>
+                    <group>
+                        <field name="mobile"/>
+                        <field name="phone"/>
+                    </group>
+                    <group>
+                        <button string="Search Customer" name="search_customer" type="object" class="oe_highlight"/>
+                    </group>
+                    <group>
+                        <button string="Print Customer" name="print_customer" type="object" class="oe_highlight"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+    <record id="action_search_customer" model="ir.actions.act_window">
+        <field name="name">Search Customer</field>
+        <field name="res_model">search.customer</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem name="Search Customer" id="search_customer_menu" action="action_search_customer" parent="sale.sale_order_menu"/>
+</odoo>

@@ -10,8 +10,12 @@
                       <group>
                              <field name="offer_discount"/>
                              <field name="special_discount"/>
+                             
                       </group>
                 </page>
+            </xpath>
+            <xpath expr="//field[@name='vat']" position='after'>
+                <field name="untrustworthy"/>
             </xpath>
             <xpath expr="//sheet/div/button[@name='action_view_sale_order']" position="before">
                 <button name="action_preview_discount" type="object" class="oe_stat_button" icon="fa-globe icon" attrs="{'invisible': [('offer_discount', '=' ,False)]}">
@@ -22,5 +26,12 @@
                 </button>
             </xpath>
         </field>
+    </record>
+
+    <record id="sale.action_quotations_with_onboarding" model="ir.actions.act_window">
+        <field name="name">value action</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'khushi':True}</field>
     </record>
 </odoo>

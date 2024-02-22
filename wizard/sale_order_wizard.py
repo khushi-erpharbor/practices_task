@@ -20,7 +20,7 @@ class SaleOrderWizad(models.TransientModel):
         res = super().default_get(fields_list)
         res["name"] = record.order_id.partner_id
         res["product"] = record.product_template_id
-        show_history = self.env['ir.config_parameter'].get_param('session_task.show_history_state')
+        show_history = self.env['ir.config_parameter'].get_param('practice.show_history_state')
         print(show_history)
         store_record = self.env["sale.order.line"].search([('order_id.partner_id.name', '=', res["name"].name),
                                                            ('product_template_id.name', '=', res["product"].name),
@@ -29,3 +29,14 @@ class SaleOrderWizad(models.TransientModel):
             'order_line_ids': [(fields.Command.set([int(record) for record in store_record]))]
         })
         return res
+
+    # @api.multi
+    def action_add_product(self):
+        res = super(SaleOrderWizad, self).action_add_product()
+        print("\n\n\n\n\n:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
+
+
+        return res
+
+    def sale_order_submit_button(self):
+        print(":::::::::::::;;;;")

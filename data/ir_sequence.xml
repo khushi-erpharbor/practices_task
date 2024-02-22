@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <data>
+        <record id="sale_order_sl" model="ir.sequence">
+            <field name="name">Sales Order</field>
+            <field name="code">sale.order.sl</field>
+            <field name="prefix">SL</field>
+            <field name="padding">0</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_sale_order_qu" model="ir.sequence">
+            <field name="name">Sales Order</field>
+            <field name="code">sale.order.qu</field>
+            <field name="prefix">QU</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="custom_subtype_sale_order_2" model="sale.order">
+            <field name="partner_id" ref="base.res_partner_12"/>
+        </record>
+
+        <record id="sale_order_0_line_7" model="sale.order.line">
+            <field name="order_id" ref="practice.custom_subtype_sale_order_2"/>
+            <field name="product_id" ref="product.product_product_25"/>
+            <field name="product_uom_qty">2</field>
+            <field name="price_unit">295.00</field>
+        </record>
+
+        <record id="custom_subtype_sale_230" model="sale.order">
+            <field name="partner_id" search="[('name', 'ilike','dadhaniya')]"/>
+            <field name ="date_order" eval="datetime.now() + timedelta(days=1)"/>
+        </record>
+
+        <record id="sale_order_type" model="sale.order.line">
+            <field name="order_id" ref="practice.custom_subtype_sale_230"/>
+            <field name="product_id" search="[('name','ilike','XXXXXX')]"></field>
+            <field name="product_uom_qty">3</field>
+            <field name="price_unit">100.00</field>
+        </record>
+
+        <record id="custom_subtype_sale_oli" model="account.move">
+            <field name="partner_id" ref="base.res_partner_18"/>
+            <field name="move_type">out_invoice</field>
+        </record>
+
+        <record id="account_move_line_see_all" model="account.move.line">
+            <field name="move_id" ref="practice.custom_subtype_sale_oli"/>
+            <field name="product_id" ref="product.product_product_8"/>
+            <field name="quantity">24</field>
+            <field name="price_unit">200.00</field>
+        </record>
+
+
+
+
+
+    </data>
+</odoo>

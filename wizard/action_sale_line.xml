@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_sale_order_line_wizard" model="ir.actions.act_window">
+        <field name="name">Sale Order Line WIzard</field>
+        <field name="res_model">purchase.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="practice.purchase_wizard_form_view"/>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="model_sale_order"/>
+        <field name="binding_view_types">tree,form</field>
+    </record>
+
+    <record id="action_purchase_order_line_wizard" model="ir.actions.act_window">
+        <field name="name">purchase Order Line WIzard</field>
+        <field name="res_model">purchase.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="practice.purchase_wizard_form_view"/>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="model_purchase_order"/>
+        <field name="binding_view_types">tree,form</field>
+    </record>
+
+</odoo>

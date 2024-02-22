@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="action_customer_record">
+        <t t-call="web.external_layout">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <div class="page">
+                        <div class="image-container">
+                            <img t-att-src='image_data_uri(doc.image_1024)' class="float-right"/><br/><br/>
+                        </div>
+                    </div>
+
+                    <div>
+                        <br/><br/><br/><br/><h1 class="h1-title-big"><b>Customer Name : </b>
+                        <span t-field="doc.name"/></h1>
+                    </div>
+                    <div>
+                        <h4><b>Parent Name : </b><span t-field="doc.partner_id"/></h4><br/>
+                        <h4><b>Mobile : </b><span t-field="doc.mobile"/></h4><br/>
+                        <h4><b>Phone : </b><span t-field="doc.phone"/></h4><br/>
+                        <h4><b>Email : </b><span t-field="doc.email"/></h4><br/>
+                        <h4><b>Address : </b><span t-field="doc.contact_address"/></h4><br/>
+                        <h4><b>website : </b><span t-field="doc.website"/></h4><br/>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+	<record id="action_customer_record" model="ir.actions.report">
+            <field name="name">Customer Report</field>
+            <field name="model">res.partner</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">practice.report_search_customer</field>
+            <field name="report_file">practice.report_search_customer</field>
+            <field name="print_report_name">'Customer-Detail'</field>
+            <field name="binding_model_id" ref="practice.model_search_customer"/>
+            <field name="binding_type">report</field>
+        </record -->>
+</odoo>

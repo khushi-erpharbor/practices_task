@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="purchase_report_inherit" inherit_id="purchase.report_purchaseorder_document">
+		<xpath expr="//th[@name='th_description']" position="before">
+			<th t-if="o.image" class="text-start">Image</th>
+		</xpath>
+		<xpath expr="//td[@id='product']" position="before">
+			<td t-if="o.image">
+				<img t-att-src="image_data_uri(line.product_id.image_1920)" style="max-height:100pt;max-width:100%"/>
+			</td>
+		</xpath>
+        <xpath expr="//th[@name='th_quantity']" position="replace"/>
+        <xpath expr="//t[@t-if='not line.display_type']/td[5]" position="replace"/>
+	</template>
+
+    
+
+
+</odoo>

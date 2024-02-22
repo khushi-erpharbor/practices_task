@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+       <template id="product_report_pdf">
+              <t t-call="web.html_container">
+                     <t t-foreach="docs" t-as="o">
+                            <t t-call="web.external_layout">
+                                   <div class="page">
+                                          <center><h2>Product Related Information</h2></center>
+                                          <table class="table table-condensed">
+                                          <br/>
+                                          <br/>
+                                          <thead>
+                                                 <td>
+                                                       <center><img t-att-src="image_data_uri(o.image_1920)" style="max-height:100pt;max-width:100%"/></center>
+                                                 </td>
+                                          </thead>
+                                          <!-- <table class="table table-condensed" style="border: 3px solid black!important;">
+                                             <tr>
+                                                  <td width="35%">
+                                                  </td>
+                                                  <td width="65%">
+                                                     <div><h5>Name : <span t-field="o.name"/></h5></div><br/>
+                                                     <div><h5>Product Type : <span t-field="o.detailed_type"/></h5></div><br/>
+                                                     <div><h5>Sales Price : <span t-field="o.list_price"/></h5></div><br/>
+                                                     <div><h5>Invoice Policy : <span t-field="o.invoice_policy"/></h5></div><br/>
+                                                     <div><h5>Taxes : <span t-field="o.taxes_id"/></h5></div><br/>
+                                                  </td>
+                                             </tr>
+                                          </table> -->
+                                          <table class="table table-condensed" style="border: 3px solid black!important;">
+                                                 <tr>
+                                                        <td>
+                                                               <th>Name</th>
+                                                        </td>
+                                                        <td>
+                                                               <span t-field="o.name"></span>   
+                                                        </td>
+                                                 </tr>
+                                                 <tr>
+                                                        <td>
+                                                               <th>Product Type</th>
+                                                        </td>
+                                                        <td>
+                                                               <span t-field="o.detailed_type"></span>   
+                                                        </td>
+                                                 </tr>
+                                                 <tr>
+                                                        <td>
+                                                               <th>Sales Price</th>
+                                                        </td>
+                                                        <td>
+                                                               <span t-field="o.list_price"></span>   
+                                                        </td>
+                                                 </tr>
+                                                 <tr>
+                                                        <td>
+                                                               <th>Invoice Policy</th>
+                                                        </td>
+                                                        <td>
+                                                               <span t-field="o.invoice_policy"></span>   
+                                                        </td>
+                                                 </tr>
+                                                 <tr>
+                                                        <td>
+                                                               <th>Taxes</th>
+                                                        </td>
+                                                        <td>
+                                                               <span t-field="o.taxes_id"></span>   
+                                                        </td>
+                                                 </tr>
+
+
+                                                 <!--        <th>Product Type</th>
+                                                        <th>Sales Price</th>
+                                                        <th>Invoice Policy</th>
+                                                        <th>Taxes</th>
+                                                 </thead>
+                                                 <tr style="text-align: center;">
+                                                        <td>
+                                                            <span t-field="o.name"></span>   
+                                                        </td>
+                                                        <td>
+                                                            <span t-field="o.detailed_type"></span>   
+                                                        </td>
+                                                        <td>
+                                                            <span t-field="o.list_price"></span>   
+                                                        </td>
+                                                        <td>
+                                                            <span t-field="o.invoice_policy"></span>   
+                                                        </td>
+                                                        <td>
+                                                            <span t-field="o.taxes_id"></span>   
+                                                        </td>
+
+                                                 </tr> -->
+                                          </table>
+                                          </table>
+                                   </div>
+                            </t>
+                     </t>
+              </t>
+       </template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <record id="action_product_template_report_pdf" model="ir.actions.report">
+        <field name="name">Product Template</field>
+        <field name="model">product.template</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">practice.product_report_pdf</field>
+        <field name="report_file">practice.product_report_pdf</field>
+        <field name="print_report_name">'Product - %s' %(object.name)</field>
+        <field name="binding_model_id" ref="product.model_product_template"/>
+        <field name="binding_type">report</field>
+ </record>
+</odoo>
