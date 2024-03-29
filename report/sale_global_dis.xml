@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="sale_template_document" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//div[@id='informations']" position="inside">
+            <div class="col-auto col-3 mw-100 mb-2">
+                <strong>Discount Apply to : </strong>
+                <br/>
+                <span t-field="doc.discount_apply_to"/>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('clearfix')]" position="after">
+            <t t-if="doc.discount_apply_to in ['global']">
+            <br/><th name="th_discount_method" class="text-right"><b>Discount Method : </b></th>
+                <td name="td_discount_method"><span t-field="docs.discount_method"/></td><br/>
+                <th name="th_discount_amount" class="text-right"><b>Discount Amount : </b></th>
+                <td name="td_discount_amount"><span t-field="docs.discount_amount"/></td>
+            </t>
+        </xpath>
+
+        <xpath expr="//table[hasclass('o_main_table')]/thead/tr/th[@name='th_description']" position="after">
+            <t t-if="doc.discount_apply_to in ['order_line']">
+                <th name="th_discount_method" class="text-right">Disc Method : </th>
+                <th name="th_discount_amount" class="text-right">Disc Amount : </th>
+            </t>
+        </xpath>
+
+        <xpath expr="//td[@name='td_name']" position="after">
+            <t t-if="doc.discount_apply_to in ['order_line']">
+                <td name="td_discount_method" class="text-right">
+                    <span t-field="line.discount_method"/>
+                </td>
+                <td name="td_discount_amount" class="text-right">
+                    <span t-field="line.discount_amounts"/>
+                </td>
+            </t>
+        </xpath>
+        <xpath expr="//div[hasclass('clearfix')]" position="after">
+            <div class="row justify-content-end">
+                <div class="col-6">
+                    <table class="table table-sm">
+                        <tr class="border-black">
+                            <td class="text-left"><strong>Discount :</strong></td>
+                            <td class="text-right">
+                                <span t-field="doc.discount" t-options='{"widget": "monetary"}'/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>

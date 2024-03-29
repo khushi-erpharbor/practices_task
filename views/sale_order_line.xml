@@ -8,13 +8,20 @@
             <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='name']" position="after">
                 <button name="%(sale_order_wizard_action_window)d" string="Show History" type="action"
                         class="oe_highlight"/>
+                <field name="discount_method" 
+                    attrs="{'column_invisible': [('parent.discount_apply_to', '!=', 'order_line')]}"/>
+                <field name="discount_amounts" 
+                    attrs="{'column_invisible': [('parent.discount_apply_to', '!=', 'order_line')]}"/>
+
             </xpath>
             <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='discount']" position="after">
                 <field name="discount_amount"/>
+                <field name="test_2" attrs="{'column_invisible': [('parent.test', '=', True)]}"/> 
+                <field name="hide" attrs="{'invisible': [('hide', '=', 'one2many')]}"/>
             </xpath>
             <xpath expr="//field[@name='partner_id']" position="after">
                 <field name="total_discount" invisible="True"/>
-                <field name="submit"/>
+                <field name="test"/>
                 <field name="users" widget="many2many_tags"/>
             </xpath>
 
@@ -22,7 +29,20 @@
                 <field name="quantity"/>
                 <field name="display_image"/>
                 <field name="purchase_id"/>
-                <field name="purchase_state" />
+                <field name="purchase_state"/>
+                <field name="discount_apply_to"/>
+                <field name="sale_order_id"/>
+                <field name="partner_obj" domain="[('saw_partner', '=', True)]"/>
+            </xpath>
+
+            <xpath expr="//field[@name='note']" position="after">
+                <field name="discount_method" attrs="{'invisible': [('discount_apply_to', '!=', 'global')]}"/>
+                <field name="discount_amount"/>
+            </xpath>
+
+
+            <xpath expr="//field[@name='tax_totals']" position="after">
+                <field name="discount"/>
             </xpath>
 
             <xpath expr="//button[@name='action_cancel']" position="after">
@@ -34,6 +54,8 @@
                 <button name="%(purchase_order_wizard_action)d" string="Add Product" type="action" class="oe_highlight"/>
                 <button name="purchase_create" string="Purchase Create" type="object" class="oe_highlight" states="draft" attrs="{'invisible': [('purchase_state', '=',True)]}"/>
                 <button name="action_send_mail" string="Send By Mail" type="object" class="oe_highlight"/>
+                <button name="add_pricelist" string="Add PriceList" type="object" class="oe_highlight"/>
+                <button name="mail_partner" string="Mail" type="object" class="oe_highlight"/>
 
             </xpath>
             
@@ -42,10 +64,13 @@
                     <field name="purchase_count" widget="statinfo" string="Purchase"/>
                 </button>
             </xpath>
+            <xpath expr="//button[@name='action_cancel']" position="after">
+                <button name="%(bulk_upload_wizard_action)d" string="Bulk Upload" type="action" class="oe_highlight"/>
+                <button name="merge_record" string="Merge" type="object" class="oe_highlight"/>
+            </xpath>
         </field>
     </record>
-<!-- attrs="{'invisible': [('purchase_count', '=', 0)]}" -->
-<!-- attrs="{'invisible': [('purchase_state', '=', False)]}" -->
+    
     <record model="ir.ui.view" id="purchase_order_view_inherit">
         <field name="name">purchase.order.view.inherit</field>
         <field name="model">purchase.order</field>
@@ -60,9 +85,9 @@
             <xpath expr="//button[@name='button_cancel']" position="after">
                 <button name="%(purchase_order_wizard_action)d" string="Add Product" type="action" class="oe_highlight"/>
             </xpath>
-            <xpath expr="//form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='price_unit']" position="after">
+            <!-- <xpath expr="//form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='price_unit']" position="after">
                 <field name="discount_a"/>
-            </xpath>
+            </xpath> -->
         </field>
     </record>
 </odoo>

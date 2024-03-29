@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="welcome_ehcs" name="welcome ehcs">
+        <t t-call="website.layout">
+            <span style="font-size:30px; color: blue;">
+                <center><p>WELCOME <t t-esc="user.name"></t></p></center>
+            </span>
+            <center>
+                <div class="clearfix oe_login_buttons">
+                    <a t-attf-href="create_portal_partner" class="btn btn-primary pull-left" id="createPartnerButton">Create Partner</a>
+
+                    <a t-attf-href="view_portal_partner" class="btn btn-primary pull-left" id="viewPartnerButton">View Partners</a>
+
+                    <a t-attf-href="view_only_portal_partner" class="btn btn-primary pull-left" id="viewPartnerButton">View Portal Partners</a>
+
+                    <a t-attf-href="sale_details" class="btn btn-primary pull-left" id="viewPartnerButton">Sales Details</a>
+                </div>
+            </center>
+            </t>
+    </template>
+
+    <template id="portal_partner" name="Create Potal Partner">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="oe_structure">
+                    <div class="container">
+                        <form role="form" action="/create_partner" method="POST">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <div class="form-group">
+                                <label for="name" class="control-label">Name</label>
+                                <input type="text" name="name" t-att-value="name" id="name"
+                                       class="form-control" placeholder="Khushi" required="required"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="control-label">Email</label>
+                                <input type="email" name="email" t-att-value="email" id="email"
+                                       class="form-control" required="required"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="control-label">Phone</label>
+                                 <input type="phone" name="phone" t-att-value="phone" id="phone"
+                                       class="form-control" required="required"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="Country" class="control-label">Country</label>
+                                <select type="Country" name="country" id="Country" class="form-control">
+                                    <t t-foreach="country" t-as="c">
+                                        <option t-att-value="c.id">
+                                            <t t-esc="c.name"/>
+                                        </option>
+                                    </t>
+                                </select>
+                            </div>
+                            <div class="clearfix oe_login_buttons">
+                                <button type="submit" class="btn btn-primary pull-left">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="portal_partner_only" name="View Partner">
+        <t t-call="website.layout">
+                <div class="page">
+                    <table class="table table-condensed" style="border: 3px solid black!important;">
+                        <tr>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Country</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <t t-foreach="partners" t-as="p">
+                                    <option t-att-value="p.id">
+                                        <t t-esc="p.name"/>
+                                    </option>
+                                </t>
+                            </td>
+                            <td>
+                                <t t-foreach="partners" t-as="p">
+                                    <option t-att-value="p.id">
+                                        <t t-esc="p.phone"/>
+                                    </option>
+                                </t>
+                            </td>
+                            <td>
+                                <t t-foreach="partners" t-as="p">
+                                    <option t-att-value="p.id">
+                                        <t t-esc="p.email"/>
+                                    </option>
+                                </t>
+                            </td>
+                            <td>
+                                <t t-foreach="partners" t-as="p">
+                                    <option t-att-value="p.id">
+                                        <t t-esc="p.country_id.name"/>
+                                    </option>
+                                </t>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+        </t>
+    </template>
+
+
+    <template id="portal_partner_con" name="View Partner">
+        <t t-call="website.layout">
+                <div class="page">
+                    <table class="table table-condensed" style="border: 3px solid black!important;">
+                        <tr>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Country</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <t t-foreach="partner" t-as="p">
+                                    <option t-att-value="p.id">
+                                        <t t-esc="p.name"/>
+                                    </option>
+                                </t>
+                            </td>
+                            <td>
+                                <t t-foreach="partner" t-as="p">
+                                    <option t-att-value="p.id">
+                                        <t t-esc="p.phone"/>
+                                    </option>
+                                </t>
+                            </td>
+                            <td>
+                                <t t-foreach="partner" t-as="p">
+                                    <option t-att-value="p.id">
+                                        <t t-esc="p.email"/>
+                                    </option>
+                                </t>
+                            </td>
+                            <td>
+                                <t t-foreach="partner" t-as="p">
+                                    <option t-att-value="p.id">
+                                        <t t-esc="p.country_id.name"/>
+                                    </option>
+                                </t>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </t>
+    </template>
+
+    <template id="sale_detail" name="sale order">
+        <t t-call="website.layout">
+            <div class="oe_structure">
+                <h3><center>Sale Order Details</center></h3>
+                <table class="table-striped">
+                    <thead style="font-size:23px;">
+                        <tr>
+                            <h6>
+                                <th>Sale Order</th>
+                                <th>Customer</th>
+                                <th>Date</th>
+                                <th>State</th>
+                            </h6>
+                        </tr>
+                    </thead>
+                    
+                </table>
+            </div>
+        </t>
+    </template>
+
+    <template id="thanks_msg" name="Thanks Message">
+        <!-- <t t-call="website.layout"> -->
+            <span style="font-size:30px; color: Brown;">
+                <center><p>Customer Created</p></center>
+            </span>
+        <!-- </t> -->
+    </template>
+
+    <record id="website_menu_create" model="website.menu">
+        <field name="name">Partner Portal</field>
+        <field name="url">/welcome_ehcs</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">80</field>
+    </record>
+</odoo>
+

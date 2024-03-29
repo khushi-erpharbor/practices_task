@@ -16,6 +16,8 @@
             </xpath>
             <xpath expr="//field[@name='vat']" position='after'>
                 <field name="untrustworthy"/>
+                <field name="portal_partner"/>
+                <field name="saw_partner"/>
             </xpath>
             <xpath expr="//sheet/div/button[@name='action_view_sale_order']" position="before">
                 <button name="action_preview_discount" type="object" class="oe_stat_button" icon="fa-globe icon" attrs="{'invisible': [('offer_discount', '=' ,False)]}">

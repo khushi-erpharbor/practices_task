@@ -6,6 +6,9 @@ class ResPartner(models.Model):
     offer_discount = fields.Boolean("Offer Discount")
     untrustworthy = fields.Boolean("Untrustworthy")
     special_discount = fields.Float("Special Discount")
+    portal_partner = fields.Boolean("Portal Partner")
+    saw_partner = fields.Boolean("Saw Partner")
+    
 
     def action_preview_discount(self):
         print("\n\n\n\n:::::::::::::::::::::::::::::::")

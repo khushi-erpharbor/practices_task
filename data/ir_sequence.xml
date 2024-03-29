@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo noupdate="1">
+<odoo>
     <data>
-        <record id="sale_order_sl" model="ir.sequence">
+        <!-- <record id="sale_order_sl" model="ir.sequence">
             <field name="name">Sales Order</field>
             <field name="code">sale.order.sl</field>
             <field name="prefix">SL</field>
@@ -14,6 +14,19 @@
             <field name="prefix">QU</field>
             <field name="padding">5</field>
             <field name="company_id" eval="False"/>
+        </record> -->
+        <record id="sequence_sale_order" model="ir.sequence">
+            <field name="name">Sale Order Sequence</field>
+            <field name="code">sale.orderss</field>
+            <field name="prefix">SO</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="sequence_cancel_order" model="ir.sequence">
+            <field name="name">Cancel Order Sequence</field>
+            <field name="code">cancel.orderss</field>
+            <field name="prefix">CN</field>
+            <field name="padding">5</field>
         </record>
 
         <record id="custom_subtype_sale_order_2" model="sale.order">

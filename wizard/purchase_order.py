@@ -22,4 +22,6 @@ class WizardPractical(models.TransientModel):
 					})]
 				})
 			return record
+			
+
 

@@ -4,10 +4,12 @@ practice.access_sale_order_wizard,access_sale_order_wizard,practice.model_sale_o
 practice.access_purchase_wizard,access_purchase_wizard,practice.model_purchase_wizard,base.group_user,1,1,1,1
 practice.access_sale_confrom_wizard,access_sale_confrom_wizard,practice.model_sale_confrom_wizard,base.group_user,1,1,1,1
 practice.access_project_planning_line,access_project_planning_line,practice.model_project_planning_line,base.group_user,1,1,1,1
-practice.access_sale_wizard,access_sale_wizard,practice.model_sale_wizard,base.group_user,1,1,1,1
 practice.access_sale_order_discount_wizard,access_sale_order_discount_wizard,practice.model_sale_order_discount_wizard,base.group_user,1,1,1,1
 practice.access_create_purchase_order,access_create_purchase_order,practice.model_create_purchase_order,base.group_user,1,1,1,1
 practice.access_search_customer,access_search_customer,practice.model_search_customer,base.group_user,1,1,1,1
+practice.access_quotation_bulk_upload,access_quotation_bulk_upload,practice.model_quotation_bulk_upload,base.group_user,1,1,1,1
+practice.access_quotation_bulk_upload_line,access_quotation_bulk_upload_line,practice.model_quotation_bulk_upload_line,base.group_user,1,1,1,1
+
 
 
 

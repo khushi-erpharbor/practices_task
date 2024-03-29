@@ -15,7 +15,6 @@ class SearchCustomer(models.Model):
         self.mobile = self.customer_id.mobile,
         self.phone = self.customer_id.phone
 
-
     def search_customer(self):
         print("Search")
         action_window = {
